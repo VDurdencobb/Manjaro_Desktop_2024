@@ -1,0 +1,2 @@
+https://aur.archlinux.org/packages/zsh-autosuggestions-git
+https://aur.archlinux.org/zsh-syntax-highlighting-git.git
