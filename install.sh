@@ -100,9 +100,9 @@ MAIN(){
     echo -e "[-] Generando repositorios \n"
     sleep 1
     Repos
-    echo -e "[-] Instalando ZSH \n"
-    sleep 1
-    ZSH
+    #echo -e "[-] Instalando ZSH \n"
+    #sleep 1
+    #ZSH
     echo -e "[-] Instalando BSPWN y SXHKD \n"
     sleep 1
     BSPWM_SXHKD
