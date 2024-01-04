@@ -3,7 +3,7 @@
 pgrep -x sxhkd > /dev/null || sxhkd &
 ~/.config/polybar/launch.sh --material&
 killall mate-notification-daemon; dunst &
-# wal -i /home/galocha/Imágenes/Wallpaper/wallpaper.jpg &
+
 
 bspc config pointer_modifier mod1 # esto indica que la tecla windows es la tecla clave
 
