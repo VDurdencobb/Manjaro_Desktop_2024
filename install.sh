@@ -30,9 +30,9 @@ BSPWM_SXHKD(){
 }
 
 NVIDIA(){
-    echo -e "¿Quiere isntalar los controladores de Nvidia? \n"
+    echo -e "¿Quiere isntalar los controladores de Nvidia? (marque el número)\n"
     echo "[1]: SI"
-    echo -e "[2]: INO \n"
+    echo -e "[2]: NO \n"
 
     read n
         case $n in
@@ -50,6 +50,7 @@ NVIDIA(){
 }
 
 Repos(){
+    cd $local_dir/repositorios
     while IFS= read -r line
     do
         git clone --depth=1  "$line"
