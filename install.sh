@@ -14,7 +14,7 @@ Update(){
 
 Install(){
     sudo pacman -S zsh gedit lsd bat dunst rofi xorg-server xorg-xinit xf86-video-qxl bspwm sxhkd dmenu nitrogen picom terminator chromium arandr polybar lxappearance
-    pamac install python-pywal
+    pamac install python-pywal brave-browser
 }
 
 Fonts(){
@@ -66,12 +66,12 @@ Polybar(){
     echo "Por favor, a continuación seleccione la opción [1]"
     sleep 1
     bash setup.sh
-    mv $local_dir/config/material ~/.config/polybar
+    rm ~/.config/polybar/material
+    mv $local_dir/config/material ~/.config/polybar/
     bash ~/.config/polybar/material/scripts/pywal.sh /usr/share/backgrounds/manjaro-wallpapers-18.0/light-stripe-maia.jpg
 }
 
 ZSH(){
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     chsh -s $(which zsh)
     chmood --shell /usr/bin/zsh root
     mv $local_dir/config/zsh/user/.zshrc ~/.zshrc
