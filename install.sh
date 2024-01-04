@@ -72,19 +72,11 @@ Polybar(){
 }
 
 ZSH(){
-    chsh -s $(which zsh)
-    chmood --shell /usr/bin/zsh root
-    mv $local_dir/config/zsh/user/.zshrc ~/.zshrc
-    sudo su
-    chsh -s /usr/bin/zsh
-    chmood --shell /usr/bin/zsh root
-    mv $local_dir/config/zsh/su/.zshrc ~/.zshrc
-    su $local_user
-    cd ~
-        mv .zsh_history .zsh_history_bad
-        strings .zsh_history_bad > .zsh_history
-        fc -R .zsh_history
-        rm ~/.zsh_history_bad
+    cd /usr/share/zsh/plugins/zsh-autosuggestions-git
+    makepkg
+    cd ../zsh-syntax-highlighting-git
+    makepkg
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 }
 
 MAIN(){
@@ -101,15 +93,43 @@ MAIN(){
     echo -e "[-] Generando repositorios \n"
     sleep 1
     Repos
-    #echo -e "[-] Instalando ZSH \n"
-    #sleep 1
-    #ZSH
     echo -e "[-] Instalando BSPWN y SXHKD \n"
     sleep 1
     BSPWM_SXHKD
     echo -e "[-] Instalando Polybar \n"
     sleep 1
     Polybar
+    echo -e "[-] Instalando ZSH \n"
+    sleep 1
+    ZSH
 }
 
-MAIN
+
+echo -e "Instalación por pasos: \n"
+    echo "[1]: Instalación general"
+    echo -e "[2]: Configuración ZSH \n"
+
+    read n
+        case $n in
+        1) 
+            MAIN
+        ;;
+        2) 
+            chsh -s $(which zsh)
+            chmood --shell /usr/bin/zsh root
+            mv $local_dir/config/zsh/user/.zshrc ~/.zshrc
+            sudo su
+            chsh -s /usr/bin/zsh
+            chmood --shell /usr/bin/zsh root
+            mv $local_dir/config/zsh/su/.zshrc ~/.zshrc
+            su $local_user
+            cd ~
+                mv .zsh_history .zsh_history_bad
+                strings .zsh_history_bad > .zsh_history
+                fc -R .zsh_history
+                rm ~/.zsh_history_bad
+        ;;
+        *) 
+            Error
+        ;;
+    esac
